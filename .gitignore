@@ -1,0 +1,10 @@
+ines (9 sloc)  0.074 kb
+*.sw*
+build/
+libs/
+tmp/
+.classpath
+.project
+.settings/
+bin/
+build.xml.old
