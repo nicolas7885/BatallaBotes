@@ -64,7 +64,6 @@ public class TableroTest {
 	}
 	
 	
-	
 	@Test
 	public void testReiniciar_VaciaElTablero(){
 		Tablero tablero = new Tablero();
