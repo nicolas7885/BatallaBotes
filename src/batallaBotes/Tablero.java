@@ -9,18 +9,18 @@ public class Tablero {
 	
 	private HashMap<Coordenada,Casillero> casilleros;
 	private int cantFilas;
-	private char[] columnas;
+	private int cantColumnas;
 	private int cantidadElementos;
 	
 	Tablero(){
 		cantFilas=8;
-		columnas= ("abcdefgh").toCharArray();
+		cantColumnas= 8;
 		cantidadElementos=0;
 		casilleros= new HashMap<Coordenada,Casillero>();
 				
 		for(int i=1; i<=cantFilas ; i++ ){
-			for(int j=0 ; j<columnas.length ; j++ ){
-				Coordenada nuevaCoordenada= new Coordenada(i,columnas[j]);
+			for(int j=0 ; j<cantColumnas ; j++ ){
+				Coordenada nuevaCoordenada= new Coordenada(i,j);
 				Casillero nuevoCasillero= new Casillero(nuevaCoordenada);
 				casilleros.put(nuevaCoordenada, nuevoCasillero);				
 			}
@@ -33,21 +33,21 @@ public class Tablero {
 	}
 	
 	
-	public Casillero obtenerCasillero(int i, char c) {
-		return casilleros.get(new Coordenada(i,c) );		
+	public Casillero obtenerCasillero(int i, int j) {
+		return casilleros.get(new Coordenada(i,j) );		
 	}
 	
 
-	public void agregarBote(int i, char c) {
-		Casillero unCasillero = casilleros.get(new Coordenada(i,c));
-		unCasillero.almacenar( new Bote() );
+	public void agregarObject(int i,int j) {
+		Casillero unCasillero = casilleros.get(new Coordenada(i,j));
+		unCasillero.almacenar( new Object() );
 		cantidadElementos++;
 	}
 
 
-	public void hundirBote(int i, char c) {
-		Casillero unCasillero = casilleros.get(new Coordenada(i,c));
-		unCasillero.vaciar();
+	public void hundirBote(int i, int j) {
+		Casillero unCasillero = casilleros.get(new Coordenada(i,j));
+		
 		cantidadElementos--;
 	}
 
@@ -57,13 +57,13 @@ public class Tablero {
 	}
 
 
-	public void ubicarBotesAleatoriamente(int cantidadBotesNuevos) {
+	public void ubicarObjetosAleatoriamente(int cantidadBotesNuevos) {
 		int i=1;
 		while(i<=cantidadBotesNuevos){
 			Coordenada coordenada=this.randomCoordenada();
 			Casillero unCasillero= this.obtenerCasillero(coordenada.x, coordenada.y);
 			if( unCasillero.estaVacio() ){
-				this.agregarBote(coordenada.x, coordenada.y);
+				this.agregarObject(coordenada.x, coordenada.y);
 				i++;
 			}
 		}		
@@ -73,8 +73,8 @@ public class Tablero {
 	private Coordenada randomCoordenada() {
 		Random randomGenerator= new Random();
 		int i= randomGenerator.nextInt(cantFilas) + 1;
-		char c= (char) ( (randomGenerator.nextInt(columnas.length) ) + 65) ;
-		return new Coordenada(i,c);
+		int j= randomGenerator.nextInt(cantColumnas)+1 ;
+		return new Coordenada(i,j);
 	}
 
 

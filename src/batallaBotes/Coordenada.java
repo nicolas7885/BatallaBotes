@@ -3,11 +3,11 @@ package batallaBotes;
 public class Coordenada {
 
 	public int x;
-	public char y;
+	public int y;
 
-	public Coordenada(int i, char c) {
+	public Coordenada(int i,int j) {
 		x= i;
-		y= Character.toLowerCase(c);
+		y= j;
 	}
 	
 	
@@ -21,7 +21,13 @@ public class Coordenada {
 
 	@Override
 	public int hashCode() {
-		return ( x + Character.getNumericValue( y )  ) ;
+		return ( x +  y*1000  ) ;
+	}
+
+
+	public int distanciaA(Coordenada otraCoordenada) {
+		int distancia=(x-otraCoordenada.x)+(y-otraCoordenada.y);
+		return distancia;
 	}
 	
 

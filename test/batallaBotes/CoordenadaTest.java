@@ -9,9 +9,19 @@ import org.junit.Test;
 public class CoordenadaTest {
 	
 	@Test
+	public void testDistanciaACoordenadaEsDiferenciaEntreAmbas(){
+		Coordenada c1= new Coordenada(2,3);
+		Coordenada c2= new Coordenada(0,0);
+		
+		int distancia= c1.distanciaA(c2);
+		
+		Assert.assertEquals(5,distancia);
+	}
+	
+	@Test
 	public void testDosCoordenadaSonIgualesSiTienenMismoXY(){
-		Coordenada c1= new Coordenada(1,'c');
-		Coordenada c2= new Coordenada(1,'c');
+		Coordenada c1= new Coordenada(1,5);
+		Coordenada c2= new Coordenada(1,5);
 		
 		Assert.assertEquals(c1,c2);
 	}

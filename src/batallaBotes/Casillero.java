@@ -14,12 +14,16 @@ public class Casillero {
 		return (contenido==null);
 	}
 
-	public void vaciar() {
-		contenido=null;
+	public Coordenada getCoordenada() {
+		return coordenada;
+	}
+	
+	public Object getContenido() {
+		return contenido;
 	}
 
-	public void almacenar(Object o) {
-		contenido= o;		
+	public void almacenar(Object objeto) {
+		contenido= objeto;		
 	}
 	
 }

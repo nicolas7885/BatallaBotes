@@ -16,7 +16,7 @@ public class TableroTest {
 	public void testObtenerCasilleroDevuelveUnCasillero(){
 		Tablero tablero = new Tablero();
 		
-		Object casillero= tablero.obtenerCasillero(3,'c');		
+		Object casillero= tablero.obtenerCasillero(3,5);		
 		Assert.assertEquals( Casillero.class,casillero.getClass());
 	}
 	
@@ -24,30 +24,30 @@ public class TableroTest {
 	public void testAgregarBotePoneUnBoteEnDichoCasillero(){
 		Tablero tablero = new Tablero();
 		
-		tablero.agregarBote(3,'c');
+		tablero.agregarObject(3,5);
 		
-		Casillero unCasillero = tablero.obtenerCasillero(3,'c');		
+		Casillero unCasillero = tablero.obtenerCasillero(3,5);		
 		Assert.assertEquals(false, unCasillero.estaVacio());		
 	}
 	
 	@Test
 	public void testAlHundirUnBoteElCasilleroQuedaVacio(){
 		Tablero tablero = new Tablero();
-		tablero.agregarBote(3,'c');
+		tablero.agregarObject(3,5);
 		
-		tablero.hundirBote(3,'c');
+		tablero.hundirBote(3,5);
 		
-		Casillero unCasillero = tablero.obtenerCasillero(3,'c');		
+		Casillero unCasillero = tablero.obtenerCasillero(3,5);		
 		Assert.assertEquals(true, unCasillero.estaVacio());
 	}
 	
 	@Test
 	public void testCantidadDeElementosCuentaCasillerosOcupados(){
 		Tablero tablero= new Tablero();
-		tablero.agregarBote(1, 'c');
-		tablero.agregarBote(2, 'c');
-		tablero.agregarBote(3, 'c');
-		tablero.agregarBote(4, 'c');
+		tablero.agregarObject(1, 5);
+		tablero.agregarObject(2, 5);
+		tablero.agregarObject(3, 5);
+		tablero.agregarObject(4, 5);
 		
 		int cantElementos = tablero.getCantidadElementos();
 		
@@ -58,7 +58,7 @@ public class TableroTest {
 	public void testUbicarBotesAleatoriamente_Aniade_N_Botes(){
 		Tablero tablero = new Tablero();
 		
-		tablero.ubicarBotesAleatoriamente(8);
+		tablero.ubicarObjetosAleatoriamente(8);
 		
 		Assert.assertEquals(8, tablero.getCantidadElementos() );
 	}
@@ -67,7 +67,7 @@ public class TableroTest {
 	@Test
 	public void testReiniciar_VaciaElTablero(){
 		Tablero tablero = new Tablero();
-		tablero.ubicarBotesAleatoriamente(10);
+		tablero.ubicarObjetosAleatoriamente(10);
 		
 		tablero.reiniciar();
 		
